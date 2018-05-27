@@ -1,6 +1,6 @@
 #include "ping.h"
 #include "motors.h"
- #include <Servo.h>
+#include <Servo.h>
 
 #define FORWARD_SPEED 10
 #define REVERSE_SPEED
@@ -42,32 +42,31 @@ void setup() {
   digitalWrite(MOTOR_A_PWM, LOW);
 
   ping_sensor.begin(TRIGGER_PIN, ECHO_PIN);
-  // motorObj.motors(motorPwmPin, leftMotorDirPin, rightMotorDirPin);
   leftServo.attach(leftServoPin);
   rightServo.attach(rightServoPin);
 }
 
 void loop() {
-  //Check for a hand
+  // Check for a hand
 
   if(ping_sensor.distanceFilter()) {
-    //Move forward
+    // Move forward
     motorForwardBack(1);
     delay(DRIVE_FWD_TIME);
     motorForwardBack(0);
 
-    //Hug
+    // Hug
     servo_hug();
-    //Play audio clip
+    // Play audio clip
     delay(HUG_TIME);
     servo_release();
     delay(HUG_RELEASE_TIME);
 
-    //Return to original position
+    // Return to original position
     motorForwardBack(-1);
     delay(DRIVE_BACK_TIME);
     motorForwardBack(0);
-    
+
   } else {
     delay(PING_RECHECK_TIME);
   }
