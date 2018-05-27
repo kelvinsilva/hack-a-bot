@@ -18,6 +18,7 @@ void setup() {
 
 
 void loop() {
+  // State machine loop goes here
   motorForwardBack(0);
 }
 
