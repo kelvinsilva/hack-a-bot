@@ -1,6 +1,6 @@
 /*
-  Test.h - Test library for Wiring - description
-  Copyright (c) 2006 John Doe.  All right reserved.
+  ping.h - Basic ping sensor library - implementation
+  Copyright (c) 2018 UCSC HAckabot Team 1.  All right reserved.
 */
 
 // ensure this library description is only included once
