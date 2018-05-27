@@ -9,6 +9,8 @@
 
 #define PING_TIMEOUT_US 100000
 
+#define HCSRO4_US_TO_CM_DIVISOR 58
+
 // library interface description
 class Ping
 {

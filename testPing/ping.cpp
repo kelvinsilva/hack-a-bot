@@ -36,7 +36,7 @@ int Ping::readDistance(void)
 
   pulseLength = pulseIn(echoPin, HIGH, PING_TIMEOUT_US);
 
-  return (int)(pulseLength / 58);
+  return (int)(pulseLength / HCSRO4_US_TO_CM_DIVISOR);
 }
 
 // Private Methods /////////////////////////////////////////////////////////////
