@@ -1,4 +1,6 @@
 #include "ping.h"
+#include "motors.h"
+ #include <Servo.h>
 
 #define FORWARD_SPEED 10
 #define REVERSE_SPEED
@@ -15,23 +17,32 @@
 
 #define PING_RECHECK_TIME 100
 
-static int triggerPin = 12;
-static int echoPin = 11;
+#define ECHO_PIN 11
+#define TRIGGER_PIN 12
 static int motorPwmPin;
 static int leftMotorDirPin;
 static int rightMotorDirPin;
 static int leftServoPin;
 static int rightServoPin;
 
-Ping ping;
-motors motorObj;
-
+Ping ping_sensor;
 Servo leftServo;
 Servo rightServo;
 
 void setup() {
-  ping.begin(triggerPin, echoPin);
-  motorObj.motors(motorPwmPin, leftMotorDirPin, rightMotorDirPin);
+  // Motor Setup
+  pinMode(MOTOR_B_DIR, OUTPUT);
+  pinMode(MOTOR_B_PWM, OUTPUT);
+  digitalWrite(MOTOR_B_DIR, LOW );
+  digitalWrite(MOTOR_B_PWM, LOW );
+
+  pinMode(MOTOR_A_DIR, OUTPUT);
+  pinMode(MOTOR_A_PWM, OUTPUT);
+  digitalWrite(MOTOR_A_DIR, LOW);
+  digitalWrite(MOTOR_A_PWM, LOW);
+
+  ping_sensor.begin(TRIGGER_PIN, ECHO_PIN);
+  // motorObj.motors(motorPwmPin, leftMotorDirPin, rightMotorDirPin);
   leftServo.attach(leftServoPin);
   rightServo.attach(rightServoPin);
 }
@@ -39,11 +50,11 @@ void setup() {
 void loop() {
   //Check for a hand
 
-  if(ping.distanceFilter()) {
+  if(ping_sensor.distanceFilter()) {
     //Move forward
-    motorObj.motor_cmd(FORWARD_SPEED);
+    motorForwardBack(1);
     delay(DRIVE_FWD_TIME);
-    motorObj.motor_cmd(0);
+    motorForwardBack(0);
 
     //Hug
     servo_hug();
@@ -53,11 +64,11 @@ void loop() {
     delay(HUG_RELEASE_TIME);
 
     //Return to original position
-    motorObj.motor_cmd(REVERSE_SPEED);
+    motorForwardBack(-1);
     delay(DRIVE_BACK_TIME);
-    motorObj.motor_cmd(0);
-  }
-  else {
+    motorForwardBack(0);
+    
+  } else {
     delay(PING_RECHECK_TIME);
   }
 }

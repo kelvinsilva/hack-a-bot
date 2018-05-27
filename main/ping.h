@@ -1,11 +1,11 @@
 /*
   ping.h - Basic ping sensor library - implementation
-  Copyright (c) 2018 UCSC HAckabot Team 1.  All right reserved.
+  Copyright (c) 2018 UCSC Hackabot Team 1. All right reserved.
 */
 
 // ensure this library description is only included once
-#ifndef Ping_h
-#define Ping_h
+#ifndef PING_H
+#define PING_H
 
 #define PING_TIMEOUT_US 100000
 
