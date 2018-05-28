@@ -1,6 +1,6 @@
 # Hackabot Social Robot
 
-Coming soon!
+This is the codebase developed during the IEEE Hack a Bot event, where myself and a few friends built a robot in a few hours using an Ardunio Nano. 
 
 ## Dependencies
 
