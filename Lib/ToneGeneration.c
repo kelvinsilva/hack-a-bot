@@ -7,6 +7,9 @@ int makeTone(unsigned int speakerPin, unsigned int tones[][2], unsigned int tone
   // If duration has elapsed
   if(stopFlag){
     noTone(speakerPin);
+    curToneIndex = 0;
+    curToneStartTime = 0;
+    return -1;
   }
   else if(curTime >= (curToneStartTime + tones[curToneIndex][0])){
       //Serial.print("hit\n");
@@ -22,12 +25,19 @@ int makeTone(unsigned int speakerPin, unsigned int tones[][2], unsigned int tone
       return curToneIndex;
   }
 
+  Serial.println("MakeTone passed");
+
   return -1;
 }
 
 unsigned int getPianoFreq(unsigned int key){
 	double freq;
-	freq = pow(2, (key-49)/12);
+
+  if(key == 0){
+    return 0;
+  }
+
+	freq = pow(2, ((double)key-49)/12);
 	freq *= 440;
 	return (unsigned int) freq;
 }
