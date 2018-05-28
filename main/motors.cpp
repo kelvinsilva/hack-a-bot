@@ -21,10 +21,10 @@ void motorForwardBack(int a){
         delay( DIR_DELAY );
         // set the motor speed and direction
         digitalWrite( MOTOR_B_DIR, HIGH ); // direction = forward
-        analogWrite( MOTOR_B_PWM, 255-PWM_FAST ); // PWM speed = fast
+        analogWrite( MOTOR_B_PWM, 255 - PWM_FAST ); // PWM speed = fast
 
         digitalWrite(MOTOR_A_DIR, HIGH);
-        analogWrite(MOTOR_A_PWM, 255-PWM_FAST);
+        analogWrite(MOTOR_A_PWM, 255 - PWM_FAST);
         motorState = 1;
       }
       break;
