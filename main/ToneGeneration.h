@@ -2,7 +2,6 @@
 // For the UCSC IEEE Hack-A-Bot 2018
 // Created by Benjamin Swanson
 
-
 // Defines
 
 
@@ -19,4 +18,4 @@ int makeTone(unsigned int speakerPin, unsigned int tones[][2], unsigned int tone
 
 // getPianoFreq()
 // Returns the piano tone of a key as a frequency.
-int getPianoFreq(int key);
+unsigned int getPianoFreq(unsigned int key);

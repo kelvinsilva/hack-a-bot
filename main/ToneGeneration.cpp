@@ -1,6 +1,7 @@
+#include <Arduino.h>
 # include "ToneGeneration.h"
 
-int makeTone(unsigned int speakerPin, unsigned int tones[][2], unsigned int tonesLength, unsigned long int curTime, boolean stopFlag){
+int makeTone(unsigned int speakerPin, unsigned int tones[][2], unsigned int tonesLength, unsigned long int curTime, bool stopFlag){
   static unsigned long int curToneStartTime = 0;
   static unsigned long int curToneIndex = 0;
 

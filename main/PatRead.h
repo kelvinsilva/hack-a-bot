@@ -10,6 +10,4 @@
 
 // wasPat()
 // Returns true if the bump sensor goes from not pat to pat.
-boolean wasPat(unsigned int patPin);
-
-//# include "PatRead.c"
+bool wasPat(unsigned int patPin1, unsigned int patPin2);
