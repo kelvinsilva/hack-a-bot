@@ -19,13 +19,15 @@ int makeTone(unsigned int speakerPin, unsigned int tones[][2], unsigned int tone
         curToneIndex = 0;
       }
       // Play next tone
-      tone(speakerPin, tones[curToneIndex][1]);
+      if(tones[curToneIndex][1] != 0){
+        tone(speakerPin, tones[curToneIndex][1]);
+      }else{
+        noTone(speakerPin);
+      }
       // Save time
       curToneStartTime = millis();
       return curToneIndex;
   }
-
-  Serial.println("MakeTone passed");
 
   return -1;
 }
