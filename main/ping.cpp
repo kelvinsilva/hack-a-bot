@@ -51,7 +51,7 @@ bool Ping::distanceFilter(void)
 {
   int pingDistance = readDistance();
 
-  if(pingDistance > TRUEDISTANCE)
+  if((pingDistance > TRUEDISTANCE) || pingDistance == 0)
   {
     if(ringBuf[index] == true)
     {
