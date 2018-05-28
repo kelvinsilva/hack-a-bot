@@ -57,25 +57,26 @@ static int state = 0;
 void loop() {
 
   if(ping_sensor.distanceFilter()) {
-    //Move forward
-    /*Serial.println("saw hand");
+    // Move forward
     motorForwardBack(1);
     delay(DRIVE_FWD_TIME);
-    motorForwardBack(0);*/
-    //Hug and play audio clip
-    //PlayAudio()
+    motorForwardBack(0);
+
+    // Hug
     servo_hug();
+    // Play audio clip
     delay(HUG_TIME);
     servo_release();
     delay(HUG_RELEASE_TIME);
-
     //return to original position
     motorForwardBack(-1);
     delay(DRIVE_BACK_TIME);
     motorForwardBack(0);
     
-  }/* else if (patReceivedSensor()){
-    servo_hug();
+
+  }
+ /*do pat sensor 
+  servo_hug();
     //PlayAudio
     delay(HUG_TIME);
     servo_release();

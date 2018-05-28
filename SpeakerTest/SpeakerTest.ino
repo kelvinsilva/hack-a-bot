@@ -1,5 +1,5 @@
-#include "../Lib/ToneGeneration.h"
-#include "../Lib/ToneGeneration.c"
+#include "./Lib/ToneGeneration.h"
+#include "./Lib/ToneGeneration.c"
 
 #define SPEAKER_PIN 9
 #define TONES_LENGTH 2
@@ -33,14 +33,16 @@ void setup() {
 
   // Convert keys to freqs
   for(int i = 0; i < KEYS_LENGTH; i++){
+      Serial.println(keys[i][1]);
       keys[i][1] = getPianoFreq(keys[i][1]);
+      Serial.println(keys[i][1]);
     }
 }
 
 void loop() {
   // put your main code here, to run repeatedly
   curTime = millis();
-  makeTone(SPEAKER_PIN, keys, TONES_LENGTH, curTime, false);
+  makeTone(SPEAKER_PIN, keys, KEYS_LENGTH, curTime, false);
 }
 
 /*
